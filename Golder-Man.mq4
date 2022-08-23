@@ -29,6 +29,7 @@ public:
               {
                if(keyWord(text)== " Buy_")
                  {
+                  // hey...
                   Sleep(500);
                   if(open_buy("XAUUSD",2301))
                     {
