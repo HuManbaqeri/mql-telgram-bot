@@ -8,6 +8,8 @@
 *.so
 *.ex4
 *.ex5
+*.mq4.log
+*.mq5.log
 
 # Packages #
 ############
