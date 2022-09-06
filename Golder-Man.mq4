@@ -6,12 +6,9 @@
 #include "..\\Include\\TradeObserverV2.mqh"
 #include "..\\Libraries\\baqerri_bot_Libb.mq4"
 
-
 CTradeObserverV2 *Observer;
 static bool onTrade;
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
+
 class CMyBot: public CCustomBot
   {
 public:
@@ -35,9 +32,6 @@ public:
                      sendSignal();
                      SendSignalScreenShot(chat.m_id, NULL, PERIOD_H1, 800, 600, TRUE,InpToken);
                      ObjectsDeleteAll();
-                     //int ticket = OrderSend("XAUUSD",OP_BUY,1,Ask,5,Ask-(50*Point),0);
-                     // SendMessage("@gold_prediction","hello");
-                     // SendMessage(chat.m_id,open_buy());
                     }
                  }
                if(keyWord(text)== " Sell_")
@@ -48,7 +42,6 @@ public:
                      sendSignal();
                      SendSignalScreenShot(chat.m_id, NULL, PERIOD_H1, 800, 600, TRUE,InpToken);
                      ObjectsDeleteAll();
-                     //SendMessage(chat.m_id,string(open_sell("XAUUSD",0901)));
                     }
                  }
                if(keyWord(text)== " Buy_80")
@@ -80,33 +73,17 @@ public:
                   sendReport();
                   SendReportScreenShot(chat.m_id, NULL, PERIOD_H1, 800, 600, TRUE,InpToken);
                   ObjectsDeleteAll();
-                  //ObjectsDeleteAll();
-                  //SendMessage(chat.m_id,string(open_sell("XAUUSD",0901)));
                  }
                if(keyWord(text)== " report")
                  {
                   sendReport();
                   SendReportScreenShot(chat.m_id, NULL, PERIOD_H1, 800, 600, TRUE,InpToken);
                   ObjectsDeleteAll();
-                  //SendMessage(chat.m_id,string(open_sell("XAUUSD",0901)));
                  }
                if(keyWord(text)== " scr")
                  {
                   SendAdminScreenShot(chat.m_id, NULL, PERIOD_H1, 800, 600, TRUE,InpToken);
                  }
-               /*
-               //--- start
-               if(text=="/start")
-                SendMessage(chat.m_id,"Hello, world! I am bot. \xF680");
-
-               //--- help
-               if(text=="/help")
-                SendMessage(chat.m_id,"My commands list: \n/start-start chatting with me \n/help-get help");
-
-               //--- balance
-               if(text=="/balance")
-                SendMessage(chat.m_id,"Balance = "+DoubleToString(AccountBalance(),2));
-               */
               }
            }
          else
@@ -179,12 +156,10 @@ void              OnTimer()
       Comment("Server is connected");
      }
    bot.GetUpdates();
-//--- reading messages
 
 //--- processing messages
    bot.ProcessMessages();
-//---{ insert your code here }
-
+ 
   }
 //+------------------------------------------------------------------+
 //|                                                                  |
@@ -193,8 +168,7 @@ void              OnTrade()
   {
    SChangeLine changes[];
    Observer.GetChanges(changes);
-//  if(NewBar)
-//  {
+
    for(int i=0; i<ArraySize(changes); i++)
      {
       if(changes[i].changeType == CHANGE_TYPE_CLOSED)
@@ -204,7 +178,6 @@ void              OnTrade()
       else
          break;
      }
-//}
   }
 //+------------------------------------------------------------------+
 
